@@ -9,9 +9,9 @@ export const Panel = ()=>{
             <Link to='/modificacionProductos'>
                 <button>MODIFICACION PRODUCTOS</button>
             </Link>
-            <Link to='/cafeteria'>
+{/*             <Link to='/cafeteria'>
                 <button>VOLVER A LA APP</button>
-            </Link>
+            </Link> */}
         </section>
     )
 }

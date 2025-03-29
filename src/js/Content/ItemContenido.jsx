@@ -1,5 +1,5 @@
 /* import { useEffect, useState } from "react" */
-import logoCirculo from "../../img/logoRosaCirculo.png"
+import logoCirculo from "../../img/ElKioscoDeEdy.png"
 
 export const ItemContenido = ({itemsFiltrados})=>{
 

@@ -1,4 +1,4 @@
-import logo from '../img/LogoDivinaRosa.png';
+import logo from '../img/ElKioscoDeEdyGrande2.png';
 //ICONOS DE NAVEGADOR
 import icnCafe from '../img/iconsNav/cafeteria.svg';
 import icnDesayuno from '../img/iconsNav/desayunos.svg';

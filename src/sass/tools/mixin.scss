@@ -1,0 +1,13 @@
+// Definición de mixins para los breakpoints de la aplicación
+
+@mixin pantallaCelular{
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin pantallaEscritorio{
+    @media screen and (min-width: 481px) and (max-width: 1920px) {
+        @content;
+    }
+}

@@ -1,40 +1,73 @@
+@use 'tools/variables.scss' as vr;
+@use 'tools/extends.scss' as ex;
+@use 'tools/mixin.scss' as mx;
 //Busqueda de Fuente Bricolage Grotesque
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Slackey&display=swap');
 
 //reseto de Estilos
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bricolage Grotesque', sans-serif;
+/*     font-family: 'Bricolage Grotesque', sans-serif; */
+    font-family: "Atma", system-ui;
+    font-weight: 600;
+    font-style: normal;
 }
-@media screen and (min-width: 320px) and (max-width: 480px) {
+
     
     body{
-        background-color: $color-principal;
-        .rootApp{
-            display: grid;
-            grid-template-areas: 
-            'cabecera'
-            'contenido'
-            'pie';
-            grid-template-columns: 100vw;
-            grid-template-rows: 40vh auto 20vh;
-            align-items: center;
-            justify-items: center;
+        background-color: vr.$color-principal;
+        
+        @include mx.pantallaCelular{
+            .rootApp{
+                display: grid;
+                grid-template-areas: 
+                'cabecera'
+                'contenido'
+                'pie';
+                grid-template-columns: 100vw;
+                grid-template-rows: 40vh auto 20vh;
+                align-items: center;
+                justify-items: center;
+            }
+            .rootPanel{
+                display: grid;
+                grid-template-areas: 
+                'cabecera'
+                'contenido'
+                'pie';
+                grid-template-columns: 100vw;
+                grid-template-rows: 20vh auto 20vh;
+                align-items: center;
+                justify-items: center;
+            }
         }
-        .rootPanel{
-            display: grid;
-            grid-template-areas: 
-            'cabecera'
-            'contenido'
-            'pie';
-            grid-template-columns: 100vw;
-            grid-template-rows: 20vh auto 20vh;
-            align-items: center;
-            justify-items: center;
+
+        @include mx.pantallaEscritorio{
+            .rootApp{
+                display: grid;
+                grid-template-areas: 
+                'cabecera contenido'
+                'cabecera contenido';
+                grid-template-columns: 20vw 50vw;
+                grid-template-rows: 100vh;
+                align-items: center;
+                justify-items: center;
+            }
+            .rootPanel{
+                display: grid;
+                grid-template-areas: 
+                'cabecera contenido'
+                'cabecera contenido';
+                grid-template-columns: 20vw 70vw;
+                grid-template-rows: 100vh;
+                align-items: center;
+                justify-items: center;
+            }
         }
-    }
+    
 }
 

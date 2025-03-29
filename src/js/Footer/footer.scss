@@ -1,3 +1,7 @@
+@use '../../sass/tools/variables.scss' as vr;
+@use '../../sass/tools/mixin.scss' as mx;
+@use '../../sass/tools/extends.scss' as ex;
+
 .contenedorFooter{
     grid-area: pie;
 }

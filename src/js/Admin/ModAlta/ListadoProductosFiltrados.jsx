@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore/lite"; 
 import { db } from "../../firebase/connectFirebase";
 import { Link } from "react-router-dom";
-import logoCirculo from "../../../img/logoRosaCirculo.png"
+import logoCirculo from "../../../img/ElKioscoDeEdy.png"
 
 export const ListadoProductosFiltrados = ({idCategoria})=>{
 
@@ -12,8 +12,8 @@ export const ListadoProductosFiltrados = ({idCategoria})=>{
      
     useEffect(()=>{
         const colleccion = collection(db, 'productos')
-        const q = query(colleccion, (where('activoProducto',"==", true), where('idCategoria','==',idCategoria)), orderBy('idSubcategoria'), orderBy('idCategoria'), orderBy('nombreProducto'))
-        
+        const q = query(colleccion,  where('idCategoria','==',idCategoria), orderBy('idSubcategoria'), orderBy('idCategoria'), orderBy('nombreProducto'))
+
         getDocs(q)
         .then((res)=>{
             setProductos(

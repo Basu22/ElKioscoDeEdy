@@ -1,5 +1,9 @@
+@use '../../../sass/tools/variables.scss' as vr;
+@use '../../../sass/tools/mixin.scss' as mx;
+@use '../../../sass/tools/extends.scss' as ex;
+
 .contenedorModificadorProductos{
-    color:$color-secundario;
+    color:vr.$color-secundario;
     width: 90%;
     h3{
         text-align: center;

@@ -4,6 +4,7 @@ import { ContenedorNav } from "./ContenedorNav"
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { db } from "../firebase/connectFirebase"
 import { useEffect, useState } from "react"
+import { Panel } from "./Panel"
 
 
 export const Header = ()=>{
@@ -29,7 +30,7 @@ export const Header = ()=>{
     return(
         <header>
             <ContenedorLogo check={categoria.length} />
-            {(categoria.length)?<ContenedorNav />:null}
+            {(categoria.length)?<ContenedorNav />:<Panel />}
             
         </header>
     )
