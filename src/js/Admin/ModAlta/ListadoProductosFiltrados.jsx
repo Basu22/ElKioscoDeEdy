@@ -4,15 +4,15 @@ import { db } from "../../firebase/connectFirebase";
 import { Link } from "react-router-dom";
 import logoCirculo from "../../../img/ElKioscoDeEdy.png"
 
-export const ListadoProductosFiltrados = ({idCategoria})=>{
+export const ListadoProductosFiltrados = ({data})=>{
 
-    console.log(idCategoria)
+    console.log(data)
 
     const [productos, setProductos] = useState([])
      
     useEffect(()=>{
-        const colleccion = collection(db, 'productos')
-        const q = query(colleccion,  where('idCategoria','==',idCategoria), orderBy('idSubcategoria'), orderBy('idCategoria'), orderBy('nombreProducto'))
+        const consultadb = collection(db, 'productos')
+        const q = query(consultadb,  where('idCategoria','==',data), orderBy('idSubcategoria'), orderBy('idCategoria'), orderBy('nombreProducto'))
 
         getDocs(q)
         .then((res)=>{
@@ -26,9 +26,7 @@ export const ListadoProductosFiltrados = ({idCategoria})=>{
                 )
             })
             
-        },[idCategoria])
-
-        console.log(productos)
+        },[data])
 
 
 

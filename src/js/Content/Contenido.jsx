@@ -11,10 +11,6 @@ export const Contenido = ()=>{
     
     const  {idCategoria}  = useParams()
 
-    
-    
-    
-    
     useEffect(()=>{
         const colleccion = collection(db, 'productos')
         const q = query(colleccion, and(where('activoProducto',"==", true), where('idCategoria','==',idCategoria)), orderBy('idSubcategoria'), orderBy('idCategoria'), orderBy('nombreProducto'))
@@ -32,6 +28,9 @@ export const Contenido = ()=>{
             })
             
         },[idCategoria])
+        
+        console.log(productos)
+
 
     return(
         <main className = "contenedorContenido">

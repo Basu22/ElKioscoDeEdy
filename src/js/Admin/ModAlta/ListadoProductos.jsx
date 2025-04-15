@@ -31,9 +31,7 @@ export const ListadoProductos = ()=>{
     const handleId = (e)=>{
         setId(e.target.id) 
     }
-        
     
-
     return(
         <>
         <section className="contenedorListadoCategorias">
@@ -47,7 +45,7 @@ export const ListadoProductos = ()=>{
                 })
             }
             </article>
-        { (id) ? <ListadoProductosFiltrados idCategoria={id} /> : null}
+        { (id) ? <ListadoProductosFiltrados data={id} /> : null}
         </section>
         </>
     )

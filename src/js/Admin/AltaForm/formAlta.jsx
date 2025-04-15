@@ -1,4 +1,5 @@
 import {  useState } from "react"
+import { Search } from "./Search"
 import { SelectSubcategorias } from "./selectSubcategoria"
 import { SelectCategorias } from "./selectCategoria "
 import { Link } from "react-router-dom"
@@ -42,6 +43,7 @@ export const FormAlta =  ()=>{
         console.log({ [e.target.name]: e.target.checked })
     }
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         addFirebase(datos, 'productos')
@@ -53,7 +55,7 @@ export const FormAlta =  ()=>{
             <h3>Formulario Alta Producto</h3>
             <form onSubmit={handleSubmit}>
                 <label id='nombreProducto'>Nombre Producto</label>
-                <input id='inputNombre' type='text' placeholder="Nombre Producto" onChange={handleDatos} value={datos.nombreProducto} name='nombreProducto' />
+                <Search handle={handleDatos} data={datos.nombreProducto}/>
                 <label id='detalleProducto'>Detalle Producto</label>
                 <textarea id='inputDetalle' type='text' placeholder="Detalle Producto" onChange={handleDatos} value={datos.detalleProducto} name='detalleProducto' rows="8" cols="25"/>
                 <label id='precioProducto'>Precio</label>

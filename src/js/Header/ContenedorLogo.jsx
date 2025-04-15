@@ -1,8 +1,12 @@
 import { logo } from "../bancoImg"
 
-export const ContenedorLogo=({check})=>{
+export const 
+
+ContenedorLogo=({check})=>{
 
     const body = document.getElementById('root')
+
+    console.log(check)
 
     if(check===0){
         body.setAttribute('class','rootPanel')

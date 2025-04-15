@@ -1,37 +1,37 @@
-import { useLocation } from "react-router-dom"
-import { ContenedorLogo } from "./ContenedorLogo"
-import { ContenedorNav } from "./ContenedorNav"
-import { collection, getDocs } from 'firebase/firestore/lite'
-import { db } from "../firebase/connectFirebase"
-import { useEffect, useState } from "react"
-import { Panel } from "./Panel"
+import { useLocation } from "react-router-dom";
+import { ContenedorLogo } from "./ContenedorLogo";
+import { ContenedorNav } from "./ContenedorNav";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { db } from "../firebase/connectFirebase";
+import { useEffect, useState } from "react";
+import { Panel } from "./Panel";
+
+export const Header = () => {
+    const [categorias, setCategorias] = useState(null); // Cambiado a null para indicar estado inicial de carga
+    const location = useLocation();
+
+    useEffect(() => {
+        const catDB = collection(db, "categorias");
+        getDocs(catDB).then((res) => {
+            const categoriasFiltradas = res.docs
+                .map((doc) => doc.data().idCategoria)
+                .filter((cat) => cat === location.pathname.slice(1));
+            setCategorias(categoriasFiltradas);
+        });
+    }, [location]);
 
 
-export const Header = ()=>{
 
-    const [categorias, setCategorias] = useState([])
-
-    const location = useLocation()
-    useEffect(()=>{
-        const catDB = collection( db,'categorias' )
-        getDocs(catDB).
-            then(res=>{
-                setCategorias(res.docs.map((res)=>{
-                    return res.data().idCategoria
-                }))
-            })
-    },[location])
-
-    const categoria = categorias.filter((cat)=> cat === location.pathname.slice(1))
-    
-    
-    
-    
-    return(
+    return (
         <header>
-            <ContenedorLogo check={categoria.length} />
-            {(categoria.length)?<ContenedorNav />:<Panel />}
-            
+            <ContenedorLogo check={categorias?.length || 0} />
+            {categorias === null ? (
+                <p>Cargando...</p> // Puedes mostrar un mensaje de carga si lo deseas
+            ) : categorias.length ? (
+                <ContenedorNav />
+            ) : (
+                <Panel />
+            )}
         </header>
-    )
-}
+    );
+};

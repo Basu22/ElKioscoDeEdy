@@ -5,6 +5,7 @@ import { collection, getDocs } from 'firebase/firestore/lite'
 export const SelectSubcategorias = ({handle, defaultSubcategoria})=>{
 
     const [ subcategorias, setSubcategorias ] = useState([ ])
+    
     useEffect(()=>{
         
         const subcat = collection(db,'subcategorias');
@@ -24,7 +25,7 @@ export const SelectSubcategorias = ({handle, defaultSubcategoria})=>{
         },[])
         
         /* para controlar lo que devuelve la base de datos */
-        /* console.log(subcategorias) */
+/*         console.log(subcategorias, "selectSubcategorias") */
         
 
         return(

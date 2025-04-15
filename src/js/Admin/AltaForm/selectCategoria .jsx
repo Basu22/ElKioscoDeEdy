@@ -4,7 +4,8 @@ import { collection, getDocs } from 'firebase/firestore/lite'
 
 export const SelectCategorias = ({handle, defaultCategoria})=>{
 
-    const [ categorias, setCategorias ] = useState([ ])    
+    const [ categorias, setCategorias ] = useState([ ])  
+      
     useEffect(()=>{
 
         const data = collection(db,'categorias');
@@ -21,12 +22,10 @@ export const SelectCategorias = ({handle, defaultCategoria})=>{
                 )
             })
         
-        },[])
-        
-        
+        },[handle])
         
         /* para controlar lo que devuelve la base de datos */
-        /* console.log(categorias) */
+/*         console.log(categorias, "selectCategorias") */
 
         return(
                 <select id='inputCategoria' name="idCategoria" onChange={handle}>
