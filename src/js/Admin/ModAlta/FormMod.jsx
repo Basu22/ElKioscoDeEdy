@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc} from "firebase/firestore/lite";
+import { doc, getDoc, updateDoc} from "firebase/firestore";
 import {  useEffect, useState } from "react"
 import { SelectSubcategorias } from "../AltaForm/selectSubcategoria"
 import { SelectCategorias } from "../AltaForm/selectCategoria "
@@ -81,7 +81,7 @@ export const FormMod =  ()=>{
                 <article id='contenedorCrear'>
                     <button id='buttonCrear'>Actualizar</button>
                 </article>
-                <Link id='buttonVolver' to='/modificacionProductos'>
+                <Link id='buttonVolver' to='/altaProductos'>
                     <button>Volver</button>
                 </Link>
 

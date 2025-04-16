@@ -1,5 +1,5 @@
 import { db } from "../connectFirebase";
-import { collection, addDoc } from 'firebase/firestore/lite'
+import { collection, addDoc } from 'firebase/firestore'
 
 export const addFirebase = (datos, coleccion)=>{
         
@@ -10,6 +10,11 @@ export const addFirebase = (datos, coleccion)=>{
             console.log(doc.id)
         })
 
-
+    return(
+        <div>
+            <h3>Producto Agregado</h3>
+            <p>El ID del producto es: {doc.id}</p>
+        </div>
+    )
 }
 

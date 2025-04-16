@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { ContenedorLogo } from "./ContenedorLogo";
 import { ContenedorNav } from "./ContenedorNav";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/connectFirebase";
 import { useEffect, useState } from "react";
 import { Panel } from "./Panel";

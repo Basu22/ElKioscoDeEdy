@@ -1,5 +1,5 @@
 import {  useState } from "react"
-import { Search } from "./Search"
+import { Buscador } from "./Buscador"
 import { SelectSubcategorias } from "./selectSubcategoria"
 import { SelectCategorias } from "./selectCategoria "
 import { Link } from "react-router-dom"
@@ -10,6 +10,7 @@ export const FormAlta =  ()=>{
     const [datos, setDatos] = useState(
         {
             nombreProducto: '',
+            nombreNormalizado: '',
             detalleProducto: '',
             precioProducto: '',
             idCategoria: '',
@@ -55,7 +56,7 @@ export const FormAlta =  ()=>{
             <h3>Formulario Alta Producto</h3>
             <form onSubmit={handleSubmit}>
                 <label id='nombreProducto'>Nombre Producto</label>
-                <Search handle={handleDatos} data={datos.nombreProducto}/>
+                <Buscador handle={handleDatos} value={datos.nombreProducto}/>
                 <label id='detalleProducto'>Detalle Producto</label>
                 <textarea id='inputDetalle' type='text' placeholder="Detalle Producto" onChange={handleDatos} value={datos.detalleProducto} name='detalleProducto' rows="8" cols="25"/>
                 <label id='precioProducto'>Precio</label>

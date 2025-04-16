@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebase/connectFirebase";
-import { collection, getDocs } from 'firebase/firestore/lite'
+import { collection, getDocs } from 'firebase/firestore'
 
 export const SelectCategorias = ({handle, defaultCategoria})=>{
 
