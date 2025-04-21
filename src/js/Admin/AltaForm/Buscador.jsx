@@ -15,6 +15,8 @@ export const Buscador = ({value, handle})=>{
         setResults([]);
         return;
       }
+
+
       // Armamos una consulta a Firestore que:
       // 1. Ordena por el campo "nombre"
       // 2. Filtra los resultados que empiezan con el texto ingresado
@@ -53,10 +55,8 @@ export const Buscador = ({value, handle})=>{
           name="nombreProducto"
           id='inputNombre'
         />
-  
         {/* Mostrar resultados */}
         <ul id='listaResultados'>
-          {console.log(results)}
           {results.map((item) => (
             console.log(item.id),
             <Link key={item.id} to={'/modificacionProductos/'+item.id}>

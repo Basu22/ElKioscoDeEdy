@@ -97,7 +97,7 @@ export const FormMod =  ()=>{
                 <article id='contenedorCrear'>
                     <button name="actualizar" id='buttonCrear'>Actualizar</button>
                 </article>
-                <Link id='buttonVolver' to='/altaProductos'>
+                <Link id='buttonVolver' to='/formProductos'>
                     <button>Volver</button>
                 </Link>
             </form>

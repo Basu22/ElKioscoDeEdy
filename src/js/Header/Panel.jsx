@@ -3,11 +3,14 @@ import { Link } from "react-router-dom"
 export const Panel = ()=>{
     return(
         <section className="contenedorBotoneraAdmin">
-            <Link to='/altaProductos'>
-                <button>ALTA PRODUCTOS</button>
+            <Link to='/formProductos'>
+                <button>PRODUCTOS</button>
             </Link>
-            <Link to='/modificacionProductos'>
-                <button>MODIFICACION PRODUCTOS</button>
+            <Link to='/formProductos'>
+                <button>CATEGORIAS</button>
+            </Link>
+            <Link to='/formProductos'>
+                <button>SUBCATEGORIAS</button>
             </Link>
 {/*             <Link to='/cafeteria'>
                 <button>VOLVER A LA APP</button>
