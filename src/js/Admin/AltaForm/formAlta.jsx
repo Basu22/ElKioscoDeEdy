@@ -55,8 +55,7 @@ export const FormAlta =  ()=>{
     }
  
     const handleSubmit = (e) => {
-        e.preventDefault()
-        AddFirebase(datos, 'productos')
+
     }
 
     return (
