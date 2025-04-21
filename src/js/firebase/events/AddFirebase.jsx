@@ -1,7 +1,7 @@
 import { db } from "../connectFirebase";
 import { collection, addDoc } from 'firebase/firestore'
 
-export const addFirebase = (datos, coleccion)=>{
+export const AddFirebase = (datos, coleccion)=>{
         
     
     const productos = collection(db,coleccion);
@@ -11,10 +11,10 @@ export const addFirebase = (datos, coleccion)=>{
         })
 
     return(
-        <div>
-            <h3>Producto Agregado</h3>
-            <p>El ID del producto es: {doc.id}</p>
-        </div>
+        <>
+        {doc.id ? <h3>Producto Agregado</h3> :
+        <h3>Agregando Producto...</h3>}
+        </>
     )
 }
 

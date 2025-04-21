@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, orderBy, and } from "firebase/firestore/lite"; 
+import { collection, getDocs, query, where, orderBy, and } from "firebase/firestore"; 
 import { db } from '../firebase/connectFirebase'
 import { CabeceraContenido } from "./CabeceraContenido"
 import { useState, useEffect } from "react";

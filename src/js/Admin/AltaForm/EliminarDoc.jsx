@@ -1,7 +1,7 @@
 import { doc, getDoc, updateDoc} from "firebase/firestore";
 import {  useEffect, useState } from "react"
-import { SelectSubcategorias } from "../AltaForm/selectSubcategoria"
-import { SelectCategorias } from "../AltaForm/selectCategoria "
+import { SelectSubcategorias } from "./selectSubcategoria"
+import { SelectCategorias } from "./selectCategoria "
 import { Link, useParams } from "react-router-dom"
 import { db } from "../../firebase/connectFirebase";
 
@@ -31,22 +31,21 @@ export const FormMod =  ()=>{
         },[idProducto])
         
     
-    const handleDatos = (e) => {
-        // Normalizamos el nombre del producto al escribirlo
-        if (e.target.name === 'nombreProducto') {
-            setDatos({
-                ...datos,
-                [e.target.name]: e.target.value,
-                nombreNormalizado: e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')
-            }) }else {
+        const handleDatos = (e) => {
+            // Normalizamos el nombre del producto al escribirlo
+            if (e.target.name === 'nombreProducto') {
+                setDatos({
+                    ...datos,
+                    [e.target.name]: e.target.value,
+                    nombreNormalizado: e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')
+                }) }else {
                 setDatos({
                     ...datos,
                     [e.target.name]: e.target.value
                 })
             }
             console.log({ [e.target.name]: e.target.value })
-
-    }
+        }
     
     const handleNumeros = (e) => {
         setDatos({
@@ -65,16 +64,10 @@ export const FormMod =  ()=>{
     }
 
     const handleSubmit = (e) => {
-        // Evita que el formulario se envíe de forma predeterminada
         e.preventDefault()
-        // Si el botón que se presionó es "actualizar", se ejecuta la lógica de actualización
-        console.log('handleSubmit', e.nativeEvent.submitter.name)
-        // Actualiza el documento en Firestore  
         const documento = doc(db, 'productos', idProducto)
-        // Actualiza el documento con los nuevos datos
-        updateDoc(documento,{...datos})
-
         
+        deleteDoc(documento,{...datos})
         console.log('handle', datos)
     }
     
@@ -95,7 +88,7 @@ export const FormMod =  ()=>{
                 <label id='textoCheckbox'>Activo?</label>
                 {(datos.activoProducto===true) ? <input id='checkbox' type='checkbox' onChange={handleBoolean} value={datos.activoProducto.checked} name='activoProducto' checked/>:<input id='checkbox' type='checkbox' onChange={handleBoolean} value={datos.activoProducto.checked} name='activoProducto'/>}
                 <article id='contenedorCrear'>
-                    <button name="actualizar" id='buttonCrear'>Actualizar</button>
+                    <button id='buttonCrear'>Eliminar</button>
                 </article>
                 <Link id='buttonVolver' to='/altaProductos'>
                     <button>Volver</button>

@@ -85,6 +85,10 @@
             left: 50%;
             list-style: none;
             background-color: white;
+            a{
+                text-decoration: none;
+                color: vr.$color-secundario;
+            }
         }	
     }
     

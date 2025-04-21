@@ -3,7 +3,8 @@ import { Buscador } from "./Buscador"
 import { SelectSubcategorias } from "./selectSubcategoria"
 import { SelectCategorias } from "./selectCategoria "
 import { Link } from "react-router-dom"
-import { addFirebase } from "../../firebase/events/addFirebase"
+import { AddFirebase } from "../../firebase/events/addFirebase"
+import { Handel } from "./Handel"
 
 export const FormAlta =  ()=>{
     
@@ -21,11 +22,20 @@ export const FormAlta =  ()=>{
         
     
     const handleDatos = (e) => {
-        setDatos({
-            ...datos,
-            [e.target.name]: e.target.value,
-        })
+        // Normalizamos el nombre del producto al escribirlo
+        if (e.target.name === 'nombreProducto') {
+            setDatos({
+                ...datos,
+                [e.target.name]: e.target.value,
+                nombreNormalizado: e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')
+            }) }else {
+            setDatos({
+                ...datos,
+                [e.target.name]: e.target.value
+            })
+        }
         console.log({ [e.target.name]: e.target.value })
+        console.log('handleSubmit', e.nativeEvent.submitter)
     }
 
     const handleNumeros = (e) => {
@@ -43,18 +53,16 @@ export const FormAlta =  ()=>{
         })
         console.log({ [e.target.name]: e.target.checked })
     }
-
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addFirebase(datos, 'productos')
-        
+        AddFirebase(datos, 'productos')
     }
 
     return (
         <section className="contenedorForm">
             <h3>Formulario Alta Producto</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={Handel}>
                 <label id='nombreProducto'>Nombre Producto</label>
                 <Buscador handle={handleDatos} value={datos.nombreProducto}/>
                 <label id='detalleProducto'>Detalle Producto</label>

@@ -20,11 +20,11 @@ export const Buscador = ({value, handle})=>{
       // 2. Filtra los resultados que empiezan con el texto ingresado
       const q = query(
         collection(db, "productos"),  // Cambiá "tus_datos" por el nombre real de tu colección
-        orderBy("nombreProducto"),            // Este campo debe existir en tus documentos y estar indexado
+        orderBy("nombreNormalizado"), // Este campo debe existir en tus documentos y estar indexado
         startAt(value),           // Empieza a buscar desde el texto ingresado...
         endAt(value + "\uf8ff")   // ...hasta lo que tenga el mismo prefijo (truco para búsquedas con "empieza por")
       );
-  
+      console.log(q)
       // onSnapshot escucha cambios en tiempo real de esa consulta
       const unsubscribe = onSnapshot(q, (snapshot) => {
         // Mapear documentos y agregarlos al estado de resultados
@@ -34,6 +34,7 @@ export const Buscador = ({value, handle})=>{
         }));
         setResults(resultados);
       });
+
 
       // Limpiar la suscripción al cambiar el texto o desmontar el componente
       return () => unsubscribe();
@@ -55,6 +56,7 @@ export const Buscador = ({value, handle})=>{
   
         {/* Mostrar resultados */}
         <ul id='listaResultados'>
+          {console.log(results)}
           {results.map((item) => (
             console.log(item.id),
             <Link key={item.id} to={'/modificacionProductos/'+item.id}>
