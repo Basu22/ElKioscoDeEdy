@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebase/connectFirebase";
 import { collection, query, orderBy, startAt, endAt, onSnapshot} from "firebase/firestore";
 import { Link } from "react-router-dom";
+import { ocultarResultados } from "../../firebase/events/ocultarResultados";
 
 export const Buscador = ({value, handle})=>{
 
@@ -54,13 +55,14 @@ export const Buscador = ({value, handle})=>{
           onChange={handle}
           name="nombreProducto"
           id='inputNombre'
+          value={value} // Valor del input controlado
         />
         {/* Mostrar resultados */}
         <ul id='listaResultados'>
           {results.map((item) => (
-            console.log(item.id),
-            <Link key={item.id} to={'/modificacionProductos/'+item.id}>
-              <li key={item.id}>{item.nombreProducto} - ${item.precioProducto}</li> 
+/*             console.log(item.id), */
+            <Link onClick={ocultarResultados} key={item.id} to={'/formProductos/'+item.id}>
+              <li id="resultadoBusqueda" key={item.id}>{item.nombreProducto} - ${item.precioProducto}</li> 
             </Link>
           ))}
         </ul>
