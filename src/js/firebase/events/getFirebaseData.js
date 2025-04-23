@@ -1,8 +1,6 @@
 // Importar las funciones necesarias de Firebase
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../connectFirebase"; // Asegúrate de que la ruta sea correcta
-import { useEffect } from "react";
-import { useParams } from "react-router-dom"; // Asegúrate de que estás usando react-router-dom
+import { db } from "../connectFirebase";
 
 // Obtener datos de Firebase
 export const getFirebaseData = (idProducto, setDatos) => {

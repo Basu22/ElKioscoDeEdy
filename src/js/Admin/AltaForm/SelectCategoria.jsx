@@ -3,7 +3,7 @@ import { db } from "../../firebase/connectFirebase";
 import { collection, getDocs } from 'firebase/firestore'
 
 export const SelectCategorias = ({handle, defaultCategoria})=>{
-
+    
     const [ categorias, setCategorias ] = useState([ ])  
       
     useEffect(()=>{
@@ -28,7 +28,7 @@ export const SelectCategorias = ({handle, defaultCategoria})=>{
 /*         console.log(categorias, "selectCategorias") */
 
         return(
-                <select id='inputCategoria' name="idCategoria" onChange={handle}>
+                <select id='inputCategoria' name="idCategoria" onChange={handle} defaultValue={defaultCategoria}>
                     <>
                     {(!defaultCategoria) ? <option key='blanco' value='blanco' selected> </option> : null}
                     {

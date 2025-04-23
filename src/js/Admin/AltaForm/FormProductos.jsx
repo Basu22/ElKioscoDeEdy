@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { getFirebaseData } from "../../firebase/events/getFirebaseData";    
 import { Buscador } from "./Buscador";
-import { SelectSubcategorias } from "./selectSubcategoria";
-import { SelectCategorias } from "./selectCategoria ";
+import { SelectCategorias } from "./SelectCategoria";
+import { SelectSubcategorias } from "./SelectSubcategoria";
 import { Link, useParams } from "react-router-dom";
 import { Handel, handleDatos, handleNumeros, handleBoolean } from "./Handel";
 
@@ -28,18 +28,16 @@ export const FormProductos = () => {
         }
     }, [idProducto]);
 
-    console.log(datos.nombreProducto); // Verifica el estado de los datos en la consola
     
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evita el comportamiento por defecto del formulario
-        console.log(datos.nombreProducto.replace(/\s/g, "").length); // Verifica si el nombre del producto está vacío
-/*         try{
-            const id = await Handel(e, datos); // Llama a Handel para manejar la acción
+        try{
+            const id = await Handel(e, datos, idProducto); // Llama a Handel para manejar la acción
             setDocumento(id); // Almacena el ID del documento creado en el estado
         }
         catch (error) {
             console.error("Error al crear el documento:", error); // Manejo de errores
-        } */
+        }
     };
 
     return (
@@ -50,6 +48,7 @@ export const FormProductos = () => {
                 <Buscador
                     handle={(e) => handleDatos(e, datos, setDatos)}
                     value={datos.nombreProducto}
+                    idProducto = {idProducto}
                 />
                 <label id="detalleProducto">Detalle Producto</label>
                 <textarea
@@ -73,10 +72,12 @@ export const FormProductos = () => {
                 />
                 <label id="categoriaProducto">Categoria Producto</label>
                 <SelectCategorias
+                    defaultCategoria={datos.idCategoria}
                     handle={(e) => handleDatos(e, datos, setDatos)}
                 />
                 <label id="subcatProducto">Subcategoria Producto</label>
                 <SelectSubcategorias
+                    defaultSubcategoria={datos.idSubcategoria}
                     handle={(e) => handleDatos(e, datos, setDatos)}
                 />
                 <label id="textoCheckbox">Activo?</label>
@@ -88,10 +89,10 @@ export const FormProductos = () => {
                     name="activoProducto"
                 />
                 <article id="contenedorCrear">
-                    <button name="eliminare" id="buttonCrear">
+                    <button name="eliminar" id="buttonCrear">
                         Eliminar
                     </button>
-                    <button name="modificar" id="buttonCrear">
+                    <button name="actualizar" id="buttonCrear">
                         Modificar
                     </button>
                     <button name="agregar" id="buttonCrear">

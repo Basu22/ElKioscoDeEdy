@@ -22,7 +22,7 @@ export const SelectSubcategorias = ({handle, defaultSubcategoria})=>{
                 )
             })
         
-        },[])
+        },[handle])
         
         /* para controlar lo que devuelve la base de datos */
 /*         console.log(subcategorias, "selectSubcategorias") */

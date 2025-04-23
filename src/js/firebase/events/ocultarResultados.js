@@ -1,10 +1,12 @@
 export const ocultarResultados = (e) => {
-
-    const listaResultados = document.getElementById("listaResultados");
-    const resultadoBusqueda = document.getElementById("resultadoBusqueda");
-
-    resultadoBusqueda.addEventListener("click", () => {
-        /* listaResultados.style.display = "none"; // Oculta la lista de resultados al hacer clic en un resultado */
-        console.log("Resultado ocultado"); // Mensaje de depuración
-    })// Oculta el resultado de búsqueda al hacer clic en él
+    const item = e.target.closest('li');
+    // Verifica si el elemento clicado es un elemento de la lista
+    // y si tiene el id 'resultadoBusqueda'
+    console.log(item.id);
+    if (item) {
+        const input = document.getElementById('inputNombre');
+        input.value = item.innerText; // Asigna el valor del elemento seleccionado al input
+        const listaResultados = document.getElementById('listaResultados');
+        listaResultados.style.display = 'none'; // Oculta la lista de resultados
+    }
 }
