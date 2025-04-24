@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: 'https://baso22.github.io/github-pages/', // Cambia la base a la URL de tu repositorio
   server: {
     host: '0.0.0.0',   // Escucha en todas las interfaces
     port: 5173,        // (opcional) Elegí un puerto si no querés el por defecto

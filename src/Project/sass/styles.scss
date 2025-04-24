@@ -1,0 +1,11 @@
+
+@forward './global.scss';
+/* Estilos del Header */
+@forward '../Content/Header/header.scss';
+@forward '../Content/Header/panel.scss';
+/* Estimos del Body */
+@forward '../Content/Body/contenido.scss';
+/* Estilos del Footer */
+@forward '../Content/Footer/footer.scss';
+/* Estilos del Formulario */
+@forward '../Admin/FormProductos/FormProductos.scss';

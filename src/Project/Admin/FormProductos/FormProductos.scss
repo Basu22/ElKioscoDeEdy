@@ -1,0 +1,130 @@
+@use '../../sass/tools/variables.scss' as vr;
+@use '../../sass/tools/mixin.scss' as mx;
+@use '../../sass/tools/extends.scss' as ex;
+
+.contenedorForm{
+    grid-area: contenido;
+    color:vr.$color-secundario;
+    width: 90%;
+    h3{
+        text-align: center;
+        margin-bottom:30px;
+    }
+    #modalForm{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50%;
+        background-color: white;
+        border-radius: 10px;    
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        #modal-content{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            #modal-body{
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: left;
+                padding: 20px;
+            }
+        }
+    }
+    form{
+        position: relative;
+        display: grid;
+        grid-template-areas: 
+        "nombreProducto inputNombre"
+        "detalleProducto inputDetalle"
+        "precioProducto inputPrecio"
+        "categoriaProducto inputCategoria"
+        "subcatProducto inputSubcat"
+        "textoCheckbox checkbox"
+        "buttonVolver buttonCrear";
+        gap: 10px;
+    
+        
+        #nombreProducto{
+            grid-area: nombreProducto;
+        }
+        #inputNombre{
+            grid-area: inputNombre;
+        }
+        #detalleProducto{
+            grid-area: detalleProducto;
+        }
+        #inputDetalle{
+            grid-area: inputDetalle;
+        }
+        #precioProducto{
+            grid-area: precioProducto;
+        }
+        #inputPrecio{
+            grid-area: inputPrecio;
+        }
+        #categoriaProducto{
+            grid-area: categoriaProducto;
+        }
+        #inputCategoria{
+            grid-area: inputCategoria;
+        }
+        #subcatProducto{
+            grid-area: subcatProducto;
+        }
+        #inputSubcat{
+            grid-area: inputSubcat;
+        }
+        #textoCheckbox{
+            grid-area: textoCheckbox;
+        }
+        #checkbox{
+            grid-area: checkbox;
+        }
+        #contenedorCrear{
+            display: flex;
+            justify-content: flex-end;
+            #buttonCrear{
+                grid-area: buttonCrear;
+                width: 40%;
+                padding: 5px;
+                align-self: center;
+            }
+        }
+        #buttonVolver{
+            grid-area: buttonVolver;
+            align-items: center;
+            button{
+                width: 40%;
+                padding: 5px;
+            }
+        }
+        #listaResultados{
+            position: absolute;
+            padding: 0 10%;
+            top: 10%;
+            left: 50%;
+            list-style: none;
+            background-color: white;
+            a{
+                text-decoration: none;
+                color: vr.$color-secundario;
+            }
+        }
+    }
+    
+    
+
+}
+
