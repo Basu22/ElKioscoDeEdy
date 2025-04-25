@@ -1,5 +1,6 @@
 import logo from '../../img/ElKioscoDeEdyGrande2.png';
-import logoCirculo from '../../img/ElKioscoDeEdy.png';
+import logoCirculo from '../../img/ElKioscodeEdy.png';
+//IMAGENES LOGO
 //ICONOS DE NAVEGADOR
 import icnCafe from '../../img/iconsNav/cafeteria.svg';
 import icnDesayuno from '../../img/iconsNav/desayunos.svg';
