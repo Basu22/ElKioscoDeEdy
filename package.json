@@ -1,11 +1,11 @@
 {
-  "name": "ElKioscoDeEdy",
+  "name": "elkioscodeedy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/ElKioscoDeEdy/cafeteria/",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
