@@ -12,11 +12,11 @@ export const App = ()=>{
 
         <Header />
             <Routes>
-                <Route path='/:idCategoria' element={<Contenido/>} />
-                <Route path='/PanelAdmin' element={<PanelAdmin/>} />
-                <Route path='/formProductos' element={<FormProductos/>}/>
-                <Route path='/formProductos/:idProducto' element={<FormProductos/>}/>
-                <Route path='*' element={<Navigate to='/cafeteria' />} />
+                <Route path='./:idCategoria' element={<Contenido/>} />
+                <Route path='./PanelAdmin' element={<PanelAdmin/>} />
+                <Route path='./formProductos' element={<FormProductos/>}/>
+                <Route path='./formProductos/:idProducto' element={<FormProductos/>}/>
+                <Route path='*' element={<Navigate to='./cafeteria' />} />
             </Routes>
 
         </ BrowserRouter >
