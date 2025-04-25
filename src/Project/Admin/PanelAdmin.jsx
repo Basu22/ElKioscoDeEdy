@@ -7,7 +7,7 @@ export const PanelAdmin = ()=>{
                 <p>Bienvenido Administrador</p>
                 <h3>Selecciona una de las opciones</h3>
 
-                <section className="contenedorBotoneraAdmin">
+{/*                 <section className="contenedorBotoneraAdmin">
                     <Link to='/formProductos'>
                         <button>PRODUCTOS</button>
                     </Link>
@@ -17,10 +17,10 @@ export const PanelAdmin = ()=>{
                     <Link to='/formProductos'>
                         <button>SUBCATEGORIAS</button>
                     </Link>
-        {/*             <Link to='/cafeteria'>
+                    <Link to='/cafeteria'>
                         <button>VOLVER A LA APP</button>
-                    </Link> */}
-                </section>
+                    </Link>
+                </section> */}
             </section>
 
         </>
