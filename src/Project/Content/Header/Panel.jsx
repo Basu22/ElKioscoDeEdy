@@ -9,13 +9,13 @@ export const Panel = ()=>{
     };
     return(
         <section className="contenedorBotoneraAdmin">
-            <Link to='/formProductos'>
+            <Link to='./formProductos'>
                 <button name="productos" onClick={handleButtonClick}>PRODUCTOS</button>
             </Link>
-            <Link to='/formProductos' >
+            <Link to='./formProductos' >
                 <button name="categorias" onClick={handleButtonClick}>CATEGORIAS</button>
             </Link>
-            <Link to='/formProductos'>
+            <Link to='./formProductos'>
                 <button name="subcategorias" onClick={handleButtonClick}>SUBCATEGORIAS</button>
             </Link>
 {/*             <Link to='/cafeteria'>
