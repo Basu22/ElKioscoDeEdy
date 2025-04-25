@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/ElKioscoDeEdy/', // Cambia esto si tu proyecto no está en la raíz del dominio
+/*   base: '/ElKioscoDeEdy/', // Cambia esto si tu proyecto no está en la raíz del dominio */
   server: {
     host: '0.0.0.0',   // Escucha en todas las interfaces
     port: 5173,        // (opcional) Elegí un puerto si no querés el por defecto
