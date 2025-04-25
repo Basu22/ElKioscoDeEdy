@@ -1,11 +1,11 @@
 {
-  "name": "divinabar",
+  "name": "ElKioscoDeEdy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/ElKioscoDeEdy/cafeteria/",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
