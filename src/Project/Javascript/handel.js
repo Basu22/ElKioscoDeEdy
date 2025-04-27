@@ -1,7 +1,12 @@
-import { db } from "../../../firebase/connectFirebase";
+import { db } from "../firebase/connectFirebase";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
-import { addFirebase } from "../../../firebase/addFirebase";
-import { normalizarConsulta } from "../../../Javascript/normalizarConsulta";
+import { addFirebase } from "../firebase/addFirebase";
+import { normalizarConsulta } from "./normalizarConsulta";
+
+export const handleButtonClick = (e) => {
+    console.log(e.nativeEvent.submitter.name;); 
+    // Aquí puedes agregar la lógica para manejar el clic en el botón
+};
 
 export const handleDatos = (e, datos, setDatos) => {
     if (e.target.name === "nombreProducto") {
@@ -32,7 +37,7 @@ export const handleBoolean = (e, datos, setDatos) => {
     });
 };
 
-export const Handel = async (e, datos, idProducto) => {
+export const handelSubmit = async (e, datos, idProducto) => {
     e.preventDefault();
     const accion = e.nativeEvent.submitter.name;
 

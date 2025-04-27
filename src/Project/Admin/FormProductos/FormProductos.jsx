@@ -4,7 +4,7 @@ import { Buscador } from "./Components/Buscador";
 import { SelectCategorias } from "./Components/SelectCategoria";
 import { SelectSubcategorias } from "./Components/SelectSubcategoria";
 import { Link, useParams } from "react-router-dom";
-import { Handel, handleDatos, handleNumeros, handleBoolean } from "./Components/Handel";
+import { handelSubmit , handleDatos, handleNumeros, handleBoolean } from "../../Javascript/handel";
 import { ModalForm } from "./Components/ModalForm";
 
 
@@ -14,6 +14,10 @@ export const FormProductos = () => {
     // Extrae el idProducto de los parámetros de la URL
     // Esto permite que el componente sepa si está en modo edición o creación
     const { idProducto } = useParams(); 
+    
+    // Estado para saber que formulario vamos a mostrar
+    // Se inicializa como false, lo que significa que el formulario no se muestra al principio
+    const [formulario, setFormulario] = useState(false); 
     
     // Estado para almacenar los datos del formulario
     // Se inicializa con valores vacíos para cada campo del formulario
@@ -54,7 +58,7 @@ export const FormProductos = () => {
         e.preventDefault(); 
         try{
             // Llama a Handel para manejar la acción
-            const data = await Handel(e, datos, idProducto); 
+            const data = await handelSubmit(e, datos, idProducto); 
             // Almacena el ID del documento creado en el estado
             setShowModal(true);
             setDataModal(data);

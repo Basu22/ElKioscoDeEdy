@@ -4,7 +4,7 @@ import { Buscador } from "./Components/Buscador";
 import { SelectCategorias } from "./Components/SelectCategoria";
 import { SelectSubcategorias } from "./Components/SelectSubcategoria";
 import { Link, useParams } from "react-router-dom";
-import { Handel, handleDatos, handleNumeros, handleBoolean } from "./Components/Handel";
+import { handelSubmit, handleDatos, handleNumeros, handleBoolean } from "../../Javascript/handel";
 import { ModalForm } from "./Components/ModalForm";
 
 
@@ -50,7 +50,7 @@ export const FormProductos = () => {
         e.preventDefault(); 
         try{
             // Llama a Handel para manejar la acción
-            const data = await Handel(e, datos, idCategoria); 
+            const data = await handelSubmit(e, datos, idCategoria); 
             // Almacena el ID del documento creado en el estado
             setShowModal(true);
             setDataModal(data);

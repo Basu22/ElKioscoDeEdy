@@ -12,8 +12,8 @@ const firebaseConfig = {
   projectId: "edykiosko",
   storageBucket: "edykiosko.firebasestorage.app",
   messagingSenderId: "379257547195",
-  appId: "1:379257547195:web:13d1a9dfcea6ea8e9efc9e",
-  measurementId: "G-0L0NE3N1XY"
+  appId: "1:379257547195:web:b52b3b3e4d1a7b469efc9e",
+  measurementId: "G-LK2N2H8KLK"
 };
 
 // Initialize Firebase
