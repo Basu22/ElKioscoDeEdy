@@ -3,41 +3,36 @@ import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { addFirebase } from "../firebase/addFirebase";
 import { normalizarConsulta } from "./normalizarConsulta";
 
-export const handleButtonClick = (e) => {
-    console.log(e.nativeEvent.submitter.name;); 
-    // Aquí puedes agregar la lógica para manejar el clic en el botón
-};
-
-export const handleDatos = (e, datos, setDatos) => {
+export const handleDatos = (e, modelo, setModelo) => {
     if (e.target.name === "nombreProducto") {
-        setDatos({
-            ...datos,
+        setModelo({
+            ...modelo,
             [e.target.name]: e.target.value,
             nombreNormalizado: normalizarConsulta(e.target.value)
         });
     } else {
-        setDatos({
-            ...datos,
+        setModelo({
+            ...modelo,
             [e.target.name]: e.target.value,
         });
     }
 };
 
-export const handleNumeros = (e, datos, setDatos) => {
-    setDatos({
-        ...datos,
+export const handleNumeros = (e, modelo, setModelo) => {
+    setModelo({
+        ...modelo,
         [e.target.name]: Number(e.target.value),
     });
 };
 
-export const handleBoolean = (e, datos, setDatos) => {
-    setDatos({
-        ...datos,
+export const handleBoolean = (e, modelo, setModelo) => {
+    setModelo({
+        ...modelo,
         [e.target.name]: e.target.checked,
     });
 };
 
-export const handelSubmit = async (e, datos, idProducto) => {
+export const handelSubmit = async (e, modelo, idProducto) => {
     e.preventDefault();
     const accion = e.nativeEvent.submitter.name;
 
@@ -45,9 +40,9 @@ export const handelSubmit = async (e, datos, idProducto) => {
         case "actualizar":
             const documentoActualizar = doc(db, "productos", idProducto);
             try {
-                await updateDoc(documentoActualizar, { ...datos });
+                await updateDoc(documentoActualizar, { ...modelo });
                 console.log("Producto actualizado con ID:", idProducto);
-                return { idProducto, datos, accion }; // Devuelve los datos necesarios
+                return { idProducto, modelo, accion }; // Devuelve los modelo necesarios
             } catch (error) {
                 console.error("Error al actualizar el producto:", error);
                 throw error;
@@ -58,7 +53,7 @@ export const handelSubmit = async (e, datos, idProducto) => {
             try {
                 await deleteDoc(documentoEliminar);
                 console.log("Producto eliminado con ID:", idProducto);
-                return { idProducto, datos, accion }; // Devuelve los datos necesarios
+                return { idProducto, modelo, accion }; // Devuelve los modelo necesarios
             } catch (error) {
                 console.error("Error al eliminar el producto:", error);
                 throw error;
@@ -66,9 +61,9 @@ export const handelSubmit = async (e, datos, idProducto) => {
 
         case "agregar":
             try {
-                const documentoAgregar = await addFirebase(datos, "productos");
+                const documentoAgregar = await addFirebase(modelo, "productos");
                 console.log("Producto agregado con ID:", documentoAgregar);
-                return { idProducto: documentoAgregar, datos, accion }; // Devuelve los datos necesarios
+                return { idProducto: documentoAgregar, modelo, accion }; // Devuelve los modelo necesarios
             } catch (error) {
                 console.error("Error al agregar el producto:", error);
                 throw error;

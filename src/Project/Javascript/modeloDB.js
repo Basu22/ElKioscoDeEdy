@@ -1,35 +1,43 @@
-import { useState } from "react"
-export const modeloDB = () => {
 
-    const [producto, setProducto] = useState({
-        nombreProducto: "",
-        nombreNormalizado: "",
-        detalleProducto: "",
-        precioProducto: "",
-        idCategoria: "",
-        idSubcategoria: "",
-        activoProducto: "",
-    });
+export const modeloDB = (modelo, setModelo) => {
+    
+    console.log("modelo", modelo)
 
-    const [categoria, setCategoria] = useState({
-        nombreProducto: "",
-        nombreNormalizado: "",
-        detalleProducto: "",
-        precioProducto: "",
-        idCategoria: "",
-        idSubcategoria: "",
-        activoProducto: "",
-    });
+    // Reinicia el estado del modelo según el tipo de modelo seleccionado
+    switch (modelo) {
+        case "productos":
+            setModelo({
+                nombreProducto: "",
+                nombreNormalizado: "",
+                detalleProducto: "",
+                precioProducto: "",
+                idCategoria: "",
+                idSubcategoria: "",
+                activoProducto: "",
+            });
+            break;
+        case "categorias":
+            setModelo({
+                nombreCategoria: "",
+                nombreNormalizado: "",
+                idCategoria: "",
+            });
+            break;
+        case "subcategorias":
+            setModelo({
+                nombreSubcategoria: "",
+                nombreNormalizado: "",
+                idSubcategoria: "",
+                idCategoria: "",
+            });
+            break;
+        default:
+            break;
+    }
 
-    const [subcategoria, setSubcategoria] = useState({
-        nombreProducto: "",
-        nombreNormalizado: "",
-        detalleProducto: "",
-        precioProducto: "",
-        idCategoria: "",
-        idSubcategoria: "",
-        activoProducto: "",
-    });
+
+    
+
 
 }
 

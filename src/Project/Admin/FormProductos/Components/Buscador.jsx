@@ -6,7 +6,7 @@ import { ocultarResultados } from "../../../Javascript/ocultarResultados"; // As
 import { normalizarConsulta } from "../../../Javascript/normalizarConsulta"; // Asegúrate de importar la función normalizarConsulta
 
 
-export const Buscador = ({value, handle, idProducto})=>{
+export const Buscador = ({value, handle, idProducto, modelo})=>{
 
     const [results, setResults] = useState([]);     // Estado para los resultados filtrados
 
@@ -24,7 +24,7 @@ export const Buscador = ({value, handle, idProducto})=>{
       // 1. Ordena por el campo "nombreNormalizado"
       // 2. Filtra los resultados que empiezan con el texto ingresado
       const q = query(
-        collection(db, "productos"),  // Ingresamos el nombre de la coleccion y el db del connectFirebase
+        collection(db, modelo),  // Ingresamos el nombre de la coleccion y el db del connectFirebase
         orderBy("nombreNormalizado"), // Este campo debe existir en tus documentos y estar indexado
         startAt(normalizarConsulta(value)),// Empieza a buscar desde el texto ingresado...
         endAt(normalizarConsulta(value) + "\uf8ff")// ...hasta lo que tenga el mismo prefijo (truco para búsquedas con "empieza por")
@@ -61,7 +61,7 @@ export const Buscador = ({value, handle, idProducto})=>{
           type="search"
           placeholder="Buscar..."
           onChange={handle}
-          name="nombreProducto"
+          name={(modelo==="productos")?"nombreProducto":(modelo==="categorias")?"nombreCategoria":"nombreSubcategoria"}
           id='inputNombre'
           value={value} // Valor del input controlado
         />
@@ -74,7 +74,11 @@ export const Buscador = ({value, handle, idProducto})=>{
             id="resultadoBusqueda" 
             key={item.id} 
             to={'/formProductos/'+item.id}>
-              <li id={item.id}>{item.nombreProducto} - ${item.precioProducto}</li> 
+              <li id={item.id}>
+              {(modelo==="productos") && item.nombreProducto}
+              {(modelo==="categorias" && item.nombreCategoria)}
+              {(modelo==="subcategoria") && item.nombreSubcategoria} 
+              {(modelo==="productos")? "- $ "+item.precioProducto:<></>}</li> 
             </Link>
           )):<>    </> }
         </ul>
