@@ -1,7 +1,5 @@
 
 export const modeloDB = (modelo, setModelo) => {
-    
-    console.log("modelo", modelo)
 
     // Reinicia el estado del modelo según el tipo de modelo seleccionado
     switch (modelo) {
@@ -19,16 +17,16 @@ export const modeloDB = (modelo, setModelo) => {
         case "categorias":
             setModelo({
                 nombreCategoria: "",
-                nombreNormalizado: "",
                 idCategoria: "",
+                activoCategoria: "",
             });
             break;
         case "subcategorias":
             setModelo({
                 nombreSubcategoria: "",
-                nombreNormalizado: "",
                 idSubcategoria: "",
                 idCategoria: "",
+                activoSubcategoria: "",
             });
             break;
         default:

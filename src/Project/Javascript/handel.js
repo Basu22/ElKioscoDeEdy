@@ -32,13 +32,13 @@ export const handleBoolean = (e, modelo, setModelo) => {
     });
 };
 
-export const handelSubmit = async (e, modelo, idProducto) => {
+export const handelSubmit = async (e, modelo, idProducto, estado) => {
     e.preventDefault();
     const accion = e.nativeEvent.submitter.name;
 
     switch (accion) {
         case "actualizar":
-            const documentoActualizar = doc(db, "productos", idProducto);
+            const documentoActualizar = doc(db, estado, idProducto);
             try {
                 await updateDoc(documentoActualizar, { ...modelo });
                 console.log("Producto actualizado con ID:", idProducto);
@@ -49,7 +49,7 @@ export const handelSubmit = async (e, modelo, idProducto) => {
             }
 
         case "eliminar":
-            const documentoEliminar = doc(db, "productos", idProducto);
+            const documentoEliminar = doc(db, estado, idProducto);
             try {
                 await deleteDoc(documentoEliminar);
                 console.log("Producto eliminado con ID:", idProducto);
@@ -61,7 +61,7 @@ export const handelSubmit = async (e, modelo, idProducto) => {
 
         case "agregar":
             try {
-                const documentoAgregar = await addFirebase(modelo, "productos");
+                const documentoAgregar = await addFirebase(modelo, estado);
                 console.log("Producto agregado con ID:", documentoAgregar);
                 return { idProducto: documentoAgregar, modelo, accion }; // Devuelve los modelo necesarios
             } catch (error) {

@@ -7,8 +7,34 @@ import { normalizarConsulta } from "../../../Javascript/normalizarConsulta"; // 
 
 
 export const Buscador = ({value, handle, idProducto, estado})=>{
+  
+  const [results, setResults] = useState([]);     
+  // Estado para los resultados filtrados, por defecto es un array vacio
+  const [orden, setOrden] = useState(''); 
+  // Estado para el orden de busqueda, por defecto es vacio
+    
+    //armamos un useEffect para que cuando cambie el estado, se ordene por el campo correspondiente
+    // dependiendo de si es productos, categorias o subcategorias
+    useEffect(() => {
+      switch (estado) {
+        case "productos":
+          //Si el estado es productos, ordenamos por nombre normalizado
+          setOrden("nombreNormalizado");
+          break;
+          case "categorias":
+          //Si el estado es categorias, ordenamos por idCategoria
+            setOrden("idCategoria");
+            break;
+          case "subcategorias":
+          //Si el estado es subcategorias, ordenamos por idSubcategoria
+          setOrden("idSubcategoria");
+          break;
+        default:
+          break;
+      }
+    }, [estado]); // Dependencia para que se ejecute cuando cambie el estado
 
-    const [results, setResults] = useState([]);     // Estado para los resultados filtrados
+
 
     useEffect(() => {
       
@@ -20,12 +46,15 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
         setResults([]);
         return;
       }
+
       // Armamos una consulta a Firestore que:
       // 1. Ordena por el campo "nombreNormalizado"
       // 2. Filtra los resultados que empiezan con el texto ingresado
       const q = query(
-        collection(db, estado),  // Ingresamos el nombre de la coleccion y el db del connectFirebase
-        orderBy("nombreNormalizado"), // Este campo debe existir en tus documentos y estar indexado
+        collection(db, estado),  
+        // Ingresamos el nombre de la coleccion y el db del connectFirebase
+        orderBy(orden), 
+        // Este campo debe existir en tus documentos y estar indexado
         startAt(normalizarConsulta(value)),// Empieza a buscar desde el texto ingresado...
         endAt(normalizarConsulta(value) + "\uf8ff")// ...hasta lo que tenga el mismo prefijo (truco para búsquedas con "empieza por")
       );
@@ -44,6 +73,7 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
         // Mostrar la lista de resultados
         listaResultados.style.display = 'block'; 
       });
+
 
       // Limpiar la suscripción al cambiar el texto o desmontar el componente
       return () => unsubscribe();
@@ -68,7 +98,6 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
 
         {/* Mostrar resultados */}
         <ul id='listaResultados' onClick={ocultarResultados}>
-          {console.log(!idProducto)}
           {(!idProducto)?results.map((item) => (
             <Link  
             id="resultadoBusqueda" 
@@ -77,8 +106,8 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
             state={{modelo: estado}}>
               <li id={item.id}>
               {(estado==="productos") && item.nombreProducto}
-              {(estado==="categorias" && item.nombreCategoria)}
-              {(estado==="subcategoria") && item.nombreSubcategoria} 
+              {(estado==="categorias") && item.nombreCategoria}
+              {(estado==="subcategorias") && item.nombreSubcategoria} 
               {(estado==="productos")? "- $ "+item.precioProducto:<></>}</li> 
             </Link>
           )):<>    </> }

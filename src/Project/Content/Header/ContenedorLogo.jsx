@@ -6,8 +6,6 @@ ContenedorLogo=({check})=>{
 
     const body = document.getElementById('root')
 
-    console.log(check)
-
     if(check===0){
         body.setAttribute('class','rootPanel')
     } else {
