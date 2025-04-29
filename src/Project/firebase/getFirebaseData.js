@@ -3,8 +3,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "./connectFirebase";
 
 // Obtener datos de Firebase
-export const getFirebaseData = (idProducto, setDatos) => {
-    const documento = doc(db, 'productos', idProducto);
+export const getFirebaseData = (idProducto, setDatos, estado) => {
+    const documento = doc(db, estado, idProducto);
     getDoc(documento)
         .then((res) => {
             setDatos({ ...res.data() });
