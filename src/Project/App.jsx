@@ -4,6 +4,7 @@ import { Header } from './Content/Header/Header.jsx';
 import { Contenido } from './Content/Body/Contenido.jsx';
 import { FormProductos } from './Admin/FormProductos/FormProductos.jsx';
 import { PanelAdmin } from './Admin/PanelAdmin.jsx';
+import { Carrito } from './Admin/Carrito/Carrito.jsx';
 
 export const App = ()=>{
     return(
@@ -16,6 +17,7 @@ export const App = ()=>{
                 <Route path='/PanelAdmin' element={<PanelAdmin/>} />
                 <Route path='/formProductos' element={<FormProductos/>}/>
                 <Route path='/formProductos/:idProducto' element={<FormProductos/>}/>
+                <Route path='/carrito' element={<Carrito/>}/>
                 <Route path='*' element={<Navigate to='/cafeteria' />} />
             </Routes>
 

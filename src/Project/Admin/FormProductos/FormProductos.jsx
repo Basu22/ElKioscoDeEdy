@@ -73,7 +73,7 @@ export const FormProductos = () => {
         <section className="contenedorForm">
             <h3>Formulario de {state.modelo}</h3>
         {estado==="productos" && (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="formProductos">
                         <label id="nombreProducto">Nombre Producto</label>
                         <Buscador
                             handle={(e) => handleDatos(e, modelo, setModelo)}
@@ -100,6 +100,14 @@ export const FormProductos = () => {
                             onChange={(e) => handleNumeros(e, modelo, setModelo)}
                             value={modelo.precioProducto}
                             name="precioProducto"
+                        />
+                        <label id="stock">Stock</label>
+                        <input id="inputStock"
+                            type="number"
+                            placeholder="Stock Producto"
+                            onChange={(e) => handleNumeros(e, modelo, setModelo)}
+                            value={modelo.stock}
+                            name="stock"    
                         />
                         <label id="categoriaProducto">Categoria Producto</label>
                         <SelectCategorias
@@ -135,7 +143,7 @@ export const FormProductos = () => {
                         </Link>
                     </form>)}
         {estado==="categorias" && (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="formCategorias">
                         <label id="nombreCategoria">Nombre Categoria</label>
                         <Buscador
                             handle={(e) => handleDatos(e, modelo, setModelo)}
@@ -176,7 +184,7 @@ export const FormProductos = () => {
                         </Link>
                     </form>)}
         {estado==="subcategorias" && (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="formSubcategorias">
                         <label id="nombreSubcategoria">Nombre Subcategoria</label>
                         <Buscador
                             handle={(e) => handleDatos(e, modelo, setModelo)}

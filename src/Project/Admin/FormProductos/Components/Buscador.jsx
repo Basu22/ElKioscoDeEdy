@@ -35,7 +35,7 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
     }, [estado]); // Dependencia para que se ejecute cuando cambie el estado
 
 
-
+    //armamos el otro useEffect en donde si ya tenemos el orden armamos la consulta cada vez que se modifica el valor del input de busqueda.
     useEffect(() => {
       
       // Función para manejar cambios en el input de búsqueda con un tiempo de espera (debounce)
@@ -92,7 +92,7 @@ export const Buscador = ({value, handle, idProducto, estado})=>{
           placeholder="Buscar..."
           onChange={handle}
           name={(estado==="productos")?"nombreProducto":(estado==="categorias")?"nombreCategoria":"nombreSubcategoria"}
-          id='inputNombre'
+          id={(estado==="productos")?"inputProducto":(estado==="categorias")?"inputCategoria":"inputSubcategoria"}
           value={value} // Valor del input controlado
         />
 

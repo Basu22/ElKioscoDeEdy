@@ -42,57 +42,24 @@
             }
         }
     }
-    form{
+    #formProductos{
         position: relative;
         display: grid;
         grid-template-areas: 
         "nombreProducto inputNombre"
         "detalleProducto inputDetalle"
         "precioProducto inputPrecio"
+        "stock inputStock"
         "categoriaProducto inputCategoria"
         "subcatProducto inputSubcat"
         "textoCheckbox checkbox"
-        "buttonVolver buttonCrear";
+        ". contenedorCrear"
+        "buttonVolver .";
+
         gap: 10px;
     
-        
-        #nombreProducto{
-            grid-area: nombreProducto;
-        }
-        #inputNombre{
-            grid-area: inputNombre;
-        }
-        #detalleProducto{
-            grid-area: detalleProducto;
-        }
-        #inputDetalle{
-            grid-area: inputDetalle;
-        }
-        #precioProducto{
-            grid-area: precioProducto;
-        }
-        #inputPrecio{
-            grid-area: inputPrecio;
-        }
-        #categoriaProducto{
-            grid-area: categoriaProducto;
-        }
-        #inputCategoria{
-            grid-area: inputCategoria;
-        }
-        #subcatProducto{
-            grid-area: subcatProducto;
-        }
-        #inputSubcat{
-            grid-area: inputSubcat;
-        }
-        #textoCheckbox{
-            grid-area: textoCheckbox;
-        }
-        #checkbox{
-            grid-area: checkbox;
-        }
         #contenedorCrear{
+            grid-area: contenedorCrear;
             display: flex;
             justify-content: flex-end;
             #buttonCrear{
@@ -123,8 +90,99 @@
             }
         }
     }
+    #formCategorias{
+        position: relative;
+        display: grid;
+        grid-template-areas: 
+        "nombreCategoria inputCategoria"
+        "idCategoria inputIdCategoria"
+        "textoCheckbox checkbox"
+        ". contenedorCrear"
+        "buttonVolver .";
+        
+        gap: 10px;
     
     
+
+        #contenedorCrear{
+            grid-area: contenedorCrear;
+            display: flex;
+            justify-content: flex-end;
+            #buttonCrear{
+                grid-area: buttonCrear;
+                width: 40%;
+                padding: 5px;
+                align-self: center;
+            }
+        }
+        #buttonVolver{
+            grid-area: buttonVolver;
+            align-items: center;
+            button{
+                width: 40%;
+                padding: 5px;
+            }
+        }
+        #listaResultados{
+            position: absolute;
+            padding: 0 10%;
+            top: 10%;
+            left: 50%;
+            list-style: none;
+            background-color: white;
+            a{
+                text-decoration: none;
+                color: vr.$color-secundario;
+            }
+        }
+    }
+    #formSubcategorias{
+        position: relative;
+        display: grid;
+        grid-template-areas: 
+        "nombreSubcategoria inputSubcategoria"
+        "idSubcategoria inputIdSubcategoria"
+        "idCategoria inputCategoria"
+        "textoCheckbox checkbox"
+        ". contenedorCrear"
+        "buttonVolver .";
+        
+        gap: 10px;
+    
+    
+
+        #contenedorCrear{
+            grid-area: contenedorCrear;
+            display: flex;
+            justify-content: flex-end;
+            #buttonCrear{
+                grid-area: buttonCrear;
+                width: 40%;
+                padding: 5px;
+                align-self: center;
+            }
+        }
+        #buttonVolver{
+            grid-area: buttonVolver;
+            align-items: center;
+            button{
+                width: 40%;
+                padding: 5px;
+            }
+        }
+        #listaResultados{
+            position: absolute;
+            padding: 0 10%;
+            top: 10%;
+            left: 50%;
+            list-style: none;
+            background-color: white;
+            a{
+                text-decoration: none;
+                color: vr.$color-secundario;
+            }
+        }
+    }
 
 }
 

@@ -4,16 +4,22 @@ export const Panel = ()=>{
     // Esto permite que el componente sepa qué acción se debe realizar
 
     return(
-        <section className="contenedorBotoneraAdmin">
-            <Link to='/formProductos' state={{ modelo: "productos" }}>
-                <button name="productos">PRODUCTOS</button>
-            </Link>
-            <Link to='/formProductos' state={{ modelo:"categorias" }} >
-                <button name="categorias">CATEGORIAS</button>
-            </Link>
-            <Link to='/formProductos' state={{ modelo:"subcategorias" }} >
-                <button name="subcategorias">SUBCATEGORIAS</button>
-            </Link>
-        </section>
+        <>
+            <section className="contenedorBotoneraAdmin">
+                <Link to='/formProductos' state={{ modelo: "productos" }}>
+                    <button name="productos">PRODUCTOS</button>
+                </Link>
+                <Link to='/formProductos' state={{ modelo:"categorias" }} >
+                    <button name="categorias">CATEGORIAS</button>
+                </Link>
+                <Link to='/formProductos' state={{ modelo:"subcategorias" }} >
+                    <button name="subcategorias">SUBCATEGORIAS</button>
+                </Link>
+                <Link to="/carrito">
+                    Carrito
+                </Link>
+            </section>
+        
+        </>
     )
 }
